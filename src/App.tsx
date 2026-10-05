@@ -3,8 +3,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight, BracketsCurly, Command, GithubLogo
 import { MagneticLink } from './components/MagneticLink'
 import { LauncherPreview } from './components/LauncherPreview'
 
-const repository = 'https://github.com/vktt/SuperSpot'
-const roadmap = `${repository}/blob/main/docs/ROADMAP.md`
+const github = 'https://github.com/vktt'
 const base = import.meta.env.BASE_URL
 const nemoUrl = `${base}nemo/`
 const copyrightYear = new Date().getFullYear()
@@ -25,7 +24,7 @@ function Header({ nemo }: { nemo: boolean }) {
         <button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="main-navigation" onClick={() => setOpen(!open)}>{open ? <X size={24} /> : <List size={24} />}</button>
         <nav id="main-navigation" className={`navigation ${open ? 'navigation-open' : ''}`} aria-label="Main navigation">
           {(nemo ? [['The toolkit', '#toolkit'], ['Your AI', '#your-ai'], ['Questions', '#questions']] : [['Experiments', '#experiments'], ['Our approach', '#approach'], ['Field notes', '#field-notes']]).map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
-          <a className="nav-cta" href={nemo ? repository : nemoUrl}>{nemo ? 'Follow on GitHub' : 'Meet Nemo'} <ArrowUpRight size={16} /></a>
+          <a className="nav-cta" href={nemo ? github : nemoUrl}>{nemo ? 'Follow on GitHub' : 'Meet Nemo'} <ArrowUpRight size={16} /></a>
         </nav>
       </div>
     </header>
@@ -35,8 +34,8 @@ function Header({ nemo }: { nemo: boolean }) {
 function Footer({ nemo }: { nemo: boolean }) {
   return (
     <footer className="site-footer container">
-      <div className="footer-top"><a className="brand" href={base}><Mark /><span>baral<span className="brand-light"> labs</span></span></a><p>Small experiments.<br />Thoughtful tools.</p><div className="footer-links"><a href={nemo ? base : nemoUrl}>{nemo ? 'The lab' : 'Nemo'} <ArrowUpRight size={15} /></a><a href={repository}>GitHub <ArrowUpRight size={15} /></a><a href={roadmap}>Roadmap <ArrowUpRight size={15} /></a></div></div>
-      <div className="footer-bottom"><span>© {copyrightYear} Baral Labs</span><span>Built in public. Proprietary software.</span><a href={`${repository}/blob/main/LICENSE`}>License <ArrowUpRight size={13} /></a><a href={`${base}licenses.txt`}>Third-party notices <ArrowUpRight size={13} /></a></div>
+      <div className="footer-top"><a className="brand" href={base}><Mark /><span>baral<span className="brand-light"> labs</span></span></a><p>Useful AI.<br />Thoughtful tools.</p><div className="footer-links"><a href={nemo ? base : nemoUrl}>{nemo ? 'The lab' : 'Nemo'} <ArrowUpRight size={15} /></a><a href={github}>GitHub <ArrowUpRight size={15} /></a></div></div>
+      <div className="footer-bottom"><span>© {copyrightYear} Baral Labs</span><span>Built in public. Proprietary software.</span><a href={`${base}licenses.txt`}>Third-party notices <ArrowUpRight size={13} /></a></div>
     </footer>
   )
 }
@@ -72,10 +71,10 @@ function LabsPage() {
         <section className="labs-hero container grid md:grid-cols-[1.2fr_1fr] gap-12 items-center">
           <div className="hero-copy reveal">
             <p className="eyebrow"><span className="status-dot" /> AN INDEPENDENT EXPERIMENT LAB</p>
-            <h1>AI experiments,<br /><span className="muted">in the open.</span></h1>
-            <p className="hero-description">Ideas are a good start.<br />Useful tools are a better one.</p>
-            <p className="body-copy">We’re Baral Labs. We explore what AI can do when it’s personal, practical, and built around the people using it. Then we build, share the decisions, and keep learning.</p>
-            <div className="hero-actions"><MagneticLink href="#experiments">Explore the work <ArrowDown size={18} /></MagneticLink><a className="text-link" href={repository}>Follow the process <ArrowUpRight size={17} /></a></div>
+            <h1>High-tech AI.<br /><span className="muted">Made for real life.</span></h1>
+            <p className="hero-description">Useful tools for everyday people.<br />Technology that respects your data.</p>
+            <p className="body-copy">Baral Labs is an independent AI lab building practical tools for the things people do every day. We bring ambitious technology down to earth—making it useful, understandable, and designed around the people who use it. Your data should help you, not become the product.</p>
+            <div className="hero-actions"><MagneticLink href="#experiments">Explore the work <ArrowDown size={18} /></MagneticLink><a className="text-link" href={github}>Follow the process <ArrowUpRight size={17} /></a></div>
           </div>
           <div className="reveal reveal-later"><LabField /></div>
           <div className="hero-footnote md:col-span-2"><span>LESS HYPE. MORE HANDS-ON.</span><span>Independent by choice. Curious by default.</span></div>
@@ -101,10 +100,10 @@ function LabsPage() {
         <section id="field-notes" className="section-pad container">
           <div className="section-heading horizontal-heading"><div><p className="eyebrow">03 / FIELD NOTES</p><h2>An open notebook.</h2></div><p>Not a launch announcement feed.<br />The decisions behind the product.</p></div>
           <div className="notes-list">
-            {[['DESIGN', 'Why a native Mac app?', 'SwiftUI, AppKit, and a launcher that belongs on your desktop.', `${repository}/blob/main/project.yml`], ['ARCHITECTURE', 'Local first. AI by choice.', 'Where data lives, how keys are stored, and what goes to a provider.', `${repository}/blob/main/README.md#ai`], ['DIRECTION', 'What we’re building next.', 'The iOS foundation, a Mac agent, and compatible extensions are on the roadmap.', roadmap]].map(([tag, title, description, href]) => <a className="note-row" href={href} key={title}><span className="eyebrow">{tag}</span><div><h3>{title}</h3><p>{description}</p></div><ArrowUpRight size={24} /></a>)}
+            {[['DESIGN', 'Why a native Mac app?', 'SwiftUI, AppKit, and a launcher that belongs on your desktop.'], ['ARCHITECTURE', 'Local first. AI by choice.', 'Where data lives, how keys are stored, and what goes to a provider.'], ['DIRECTION', 'What we’re building next.', 'The iOS foundation, a Mac agent, and compatible extensions are on the roadmap.']].map(([tag, title, description]) => <article className="note-row" key={title}><span className="eyebrow">{tag}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}
           </div>
         </section>
-        <section className="labs-closing container"><p className="eyebrow">KEEP AN EYE ON THE LAB</p><h2>Good questions.<br />Better experiments.</h2><MagneticLink href={repository}>Follow on GitHub <GithubLogo size={20} /></MagneticLink><p>No mailing list. No noise. Just the work.</p></section>
+        <section className="labs-closing container"><p className="eyebrow">KEEP AN EYE ON THE LAB</p><h2>Good questions.<br />Better experiments.</h2><MagneticLink href={github}>Follow on GitHub <GithubLogo size={20} /></MagneticLink><p>No mailing list. No noise. Just the work.</p></section>
       </main>
       <Footer nemo={false} />
     </div>
@@ -116,11 +115,11 @@ function ArrowBendIcon() {
 }
 
 const faqs = [
-  ['Can I download Nemo today?', 'Nemo is in early development. This website does not offer a signed, notarized download. Developers can follow the repository’s build instructions with macOS 14+, Xcode 16+, and XcodeGen.'],
-  ['Is Nemo open source?', 'The work and source are publicly visible, but Nemo is proprietary software, © Baral Labs, all rights reserved. Public development is not an open-source license. See the repository’s LICENSE for the terms.'],
+  ['Can I download Nemo today?', 'Nemo is in early development, and this website does not offer a signed, notarized download. Follow Baral Labs on GitHub for development updates.'],
+  ['Is Nemo open source?', 'Nemo is proprietary software, © Baral Labs, all rights reserved. It is not distributed under an open-source license.'],
   ['Does everything stay on my Mac?', 'Local search uses macOS services and local data. AI prompts and any context you choose to submit go directly to your configured provider. Web suggestions, web results, and currency-rate updates also use network services. Local model setups are available through Ollama or LM Studio.'],
   ['Which AI providers can I use?', 'OpenAI, Anthropic, Gemini, OpenRouter, OpenAI-compatible endpoints, Ollama, LM Studio, and GitHub Copilot through its CLI. Apple Intelligence on-device models require a supported Mac and macOS 26 or later. Configure providers in Nemo’s Settings; API keys stay in Keychain. Provider fees and availability are separate.'],
-  ['Can I use extensions or an iPhone app?', 'Raycast-format script commands and Apple Shortcuts work today. A Raycast-compatible extension host, the iOS app, cross-device sync, and a multi-step Mac agent are planned—not available features. Follow the roadmap for their status.'],
+  ['Can I use extensions or an iPhone app?', 'Raycast-format script commands and Apple Shortcuts work today. A Raycast-compatible extension host, the iOS app, cross-device sync, and a multi-step Mac agent are planned—not available features.'],
   ['What permissions does Nemo need?', 'Permissions are requested when relevant: Contacts and EventKit for their scopes; Accessibility for pasting and selected-text features; Automation for browser and Finder actions; Full Disk Access for browser data; Screen Recording for screen-text recognition. You choose what to enable.'],
 ]
 
@@ -135,8 +134,8 @@ function NemoPage() {
             <h1>Less switching.<br /><span className="muted">More doing.</span></h1>
             <p className="hero-description">Your Mac has a new starting point.</p>
             <p className="body-copy">Find a file. Join a meeting. Ask your AI. Nemo brings the things you do every day into one keyboard-first, native Mac launcher.</p>
-            <div className="hero-actions"><MagneticLink href={repository}>Follow development <ArrowUpRight size={18} /></MagneticLink><a href="#toolkit" className="text-link">Take a closer look <ArrowDown size={17} /></a></div>
-            <p className="availability"><span className="status-dot" /> Early development · macOS 14+<br /><span>No public signed download yet. Build instructions on GitHub.</span></p>
+            <div className="hero-actions"><MagneticLink href={github}>Follow development <ArrowUpRight size={18} /></MagneticLink><a href="#toolkit" className="text-link">Take a closer look <ArrowDown size={17} /></a></div>
+            <p className="availability"><span className="status-dot" /> Early development · macOS 14+<br /><span>No public signed download yet.</span></p>
           </div>
           <div className="reveal reveal-later"><LauncherPreview /></div>
         </section>
@@ -153,7 +152,7 @@ function NemoPage() {
 
         <section id="your-ai" className="ai-section section-pad">
           <div className="container grid md:grid-cols-[1fr_1.1fr] gap-16 items-center">
-            <div className="section-heading"><p className="eyebrow">02 / YOUR AI, YOUR TERMS</p><h2>A thinking partner.<br />Not a walled garden.</h2><p>Ask a quick question in the launcher, continue in a saved chat, or bring AI to the text cursor in another app.</p><p>Use your own provider accounts and API keys, or connect a local model. Keys live in macOS Keychain. Requests go straight to the provider you configure.</p><a href={`${repository}/blob/main/README.md#ai`} className="text-link">Explore AI setup <ArrowUpRight size={18} /></a></div>
+            <div className="section-heading"><p className="eyebrow">02 / YOUR AI, YOUR TERMS</p><h2>A thinking partner.<br />Not a walled garden.</h2><p>Ask a quick question in the launcher, continue in a saved chat, or bring AI to the text cursor in another app.</p><p>Use your own provider accounts and API keys, or connect a local model. Keys live in macOS Keychain. Requests go straight to the provider you configure.</p></div>
             <div className="provider-map"><div className="provider-map-title"><Sparkle size={24} /><span>Nemo</span><small>ONE NATIVE INTERFACE</small></div><div className="provider-row"><span className="mono">01</span><div><strong>Cloud, by choice</strong><p>OpenAI · Anthropic · Gemini · OpenRouter<br />OpenAI-compatible endpoints · GitHub Copilot CLI</p></div><ArrowRight size={20} /></div><div className="provider-row"><span className="mono">02</span><div><strong>Local, if you prefer</strong><p>Ollama · LM Studio</p></div><ArrowRight size={20} /></div><div className="provider-row"><span className="mono">03</span><div><strong>On-device, where supported</strong><p>Apple Intelligence · macOS 26+</p></div><ArrowRight size={20} /></div><p className="provider-note">Cloud providers receive the prompts and context you submit. Provider costs and model requirements apply.</p></div>
           </div>
         </section>
@@ -163,13 +162,13 @@ function NemoPage() {
           <div className="principles">{[['Built for the Mac.', 'SwiftUI and AppKit, not a web app in a desktop wrapper. Spotlight, Contacts, and EventKit do the work they’re good at.'], ['Permissions with a purpose.', 'Enable only the features you want. Nemo asks macOS for access when a scope needs it, rather than asking for everything up front.'], ['No telemetry by design.', 'No analytics or tracking are built into this website. Nemo’s stated direction is local-first with no telemetry by default—not a promise that every feature is offline.']].map(([title, description]) => <article className="principle" key={title}><LockSimple size={22} /><div><h3>{title}</h3><p>{description}</p></div></article>)}</div>
         </section>
 
-        <section className="roadmap-band container"><div><p className="eyebrow">STILL AN EXPERIMENT. ALREADY USEFUL.</p><h2>Built today.<br />Room for tomorrow.</h2></div><div><p>The native Mac launcher and AI tools are here. Next on the roadmap: an iOS foundation, an agent that can act on your Mac, and Raycast-compatible extensions.</p><span className="pill">PLANNED, NOT SHIPPING</span><a href={roadmap} className="text-link">Read the roadmap <ArrowUpRight size={18} /></a></div></section>
+        <section className="roadmap-band container"><div><p className="eyebrow">STILL AN EXPERIMENT. ALREADY USEFUL.</p><h2>Built today.<br />Room for tomorrow.</h2></div><div><p>The native Mac launcher and AI tools are here. Next on the roadmap: an iOS foundation, an agent that can act on your Mac, and Raycast-compatible extensions.</p><span className="pill">PLANNED, NOT SHIPPING</span></div></section>
 
         <section id="questions" className="section-pad container grid md:grid-cols-[.8fr_1.2fr] gap-16">
           <div className="section-heading"><p className="eyebrow">04 / GOOD QUESTIONS</p><h2>A little more<br />before you start.</h2></div>
           <div className="faq-list">{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span className="faq-plus" aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
         </section>
-        <section className="nemo-closing container"><span className="eyebrow">MAKE A LITTLE ROOM FOR FOCUS</span><h2>Your next move<br />starts with Nemo.</h2><div className="hero-actions"><MagneticLink href={repository}>See the project <GithubLogo size={20} /></MagneticLink><MagneticLink href={`${repository}#getting-started`} secondary>Build from source <ArrowUpRight size={18} /></MagneticLink></div><p>macOS 14+ · Early development · Proprietary software</p></section>
+        <section className="nemo-closing container"><span className="eyebrow">MAKE A LITTLE ROOM FOR FOCUS</span><h2>Your next move<br />starts with Nemo.</h2><div className="hero-actions"><MagneticLink href={github}>Follow Baral Labs <GithubLogo size={20} /></MagneticLink><MagneticLink href={base} secondary>Explore the lab <ArrowUpRight size={18} /></MagneticLink></div><p>macOS 14+ · Early development · Proprietary software</p></section>
       </main>
       <Footer nemo />
     </div>
