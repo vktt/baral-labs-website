@@ -1,8 +1,8 @@
 # Baral Labs website
 
-Standalone website for **Baral Labs** (`/`, "AI experiments, in the open") and **Nemo** (`/nemo/`), an early-development native macOS launcher and AI assistant. iOS, agents, and Raycast-compatible extensions are planned, not available.
+Standalone website for **Baral Labs** (`/`), an independent AI lab building practical tools for everyday life, and **Nemo** (`/nemo/`), an early-development native macOS launcher and AI assistant. iOS, agents, and Raycast-compatible extensions are planned, not available.
 
-Nemo's source is public at [vktt/SuperSpot](https://github.com/vktt/SuperSpot), but Nemo is proprietary software, not open source. Product, build, license, and roadmap links point to that repository.
+Nemo is proprietary software, not open source. GitHub links on the site lead to the Baral Labs profile.
 
 The site is static (React, Vite, Tailwind). It has no analytics, tracking, API-key collection, or real AI requests; the launcher previews are illustrations.
 
